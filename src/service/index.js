@@ -10,7 +10,7 @@ class DealService{
 
             const xml = await this.convertXml(body)
 
-            let url = `https://bling.com.br/Api/v2/pedido/json/?apikey=${apiKey}xml=${xml}`
+            let url = `https://bling.com.br/Api/v2/pedido/json/?apikey=${apiKey}&xml=${xml}`
 
             const response = await axios.post(url)
 
