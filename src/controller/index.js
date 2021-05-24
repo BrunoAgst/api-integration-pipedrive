@@ -48,13 +48,19 @@ class DealController{
 
             const response = await service.consultDatabase()
 
+            if(response === false){
+                res.status(404)
+                res.json({'Erro': "Nenhuma cliente encontrado"})
+                return
+            }
+
             res.status(200)
             res.json(response)
             
         } catch (error) {
             console.log(error)
             res.status(503)
-            res.json({'error': 'Serviço indisponível'})
+            res.json({'Erro': 'Serviço indisponível'})
         }
     }
 }

@@ -10,7 +10,7 @@ class DealService{
 
             const xml = await this.convertXml(body)
 
-            let url = `https://bling.com.br/Api/v2/pedido/json/?apikey=${apiKey}&xml=${xml}`
+            let url = `https://bling.com.br/Api/v2/pedido/json/?apikey=${apiKey}&gitxml=${xml}`
 
             const response = await axios.post(url)
 
@@ -59,7 +59,11 @@ class DealService{
                     
             const userModel = mongoose.model("ganhos", ganhos)
             
-            const response = await userModel.find({'data': dateNow})
+            const response = await userModel.find({'data': '25/05/2021'})
+
+            if(response.length <= 0){
+                return false
+            }
             
             return {
                 data: dateNow,
